@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Form</title>
+    <style>
+        body {
+            background: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 450px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+            font-size: 14px;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            outline: none;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #4A90E2;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            cursor: pointer;
+            margin-top: 0.5rem;
+        }
+        button:hover { background: #357ABD; }
+        .error {
+            background: #FCEBEB;
+            color: #A32D2D;
+            padding: 10px 14px;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            font-size: 13px;
+            border-left: 3px solid #A32D2D;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Student Registration</h2>
+
+        {% if error %}
+            <div class="error">⚠️ {{ error }}</div>
+        {% endif %}
+
+        <form action="/submit" method="POST">
+            <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" name="name"
+                       placeholder="Enter your name" required>
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" name="email"
+                       placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label>Grade</label>
+                <select name="grade" required>
+                    <option value="">Select grade</option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                    <option value="F">F</option>
+                </select>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
